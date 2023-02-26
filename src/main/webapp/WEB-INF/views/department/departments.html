@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Departments</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+          crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {box-sizing: border-box;}
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url("https://img.freepik.com/premium-vector/medical-background-of-science_120542-126.jpg");
+            background-size: cover;
+        }
+
+        .header {
+            overflow: hidden;
+            background-color: #ffffff;
+            padding: 20px 10px;
+        }
+
+        .header a {
+            float: left;
+            color: #0c0a0a;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 25px;
+            border-radius: 4px;
+        }
+
+        .header a.logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .header a:hover {
+            background-color: #0db5e8;
+            color: #ffffff;
+        }
+
+        .header a.active {
+            background-color: #fce809;
+            color: #0d31e8;
+        }
+
+        .header-right {
+            float: right;
+        }
+
+        @media screen and (max-width: 500px) {
+            .header a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+
+            .header-right {
+                float: none;
+            }
+        }
+    </style>
+</head>
+<div class="header">
+    <a th:href="@{/hospitals}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+        </svg>
+        <a class="logo" th:text="${hospital.getName()}">Name</a>
+    </a>
+    <p style="text-align:center; margin-left: 550px">
+        <a class="btn btn-outline-primary" role="button" th:href="@{/{id}/departments/new(id=${id})}">Add new department</a>
+    </p>
+    <div class="header-right">
+        <a th:href="@{/hospitals/{id}(id=${hospital.getId()})}" >Home</a>
+        <a th:href="@{/{id}/patients(id=${hospital.getId()})}">Patients</a>
+        <a class="active" th:href="@{/{id}/departments(id=${hospital.getId()})}">Departments</a>
+        <a th:href="@{/{id}/doctors(id=${hospital.getId()})}">Doctors</a>
+        <a th:href="@{/{id}/appointments(id=${hospital.getId()})}">Appointments</a>
+    </div>
+</div>
+<body>
+<table class="table">
+    <thead class="table-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Doctors</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="department:${departments}">
+        <th th:text="${department.getId()}"></th>
+        <td th:text="${department.getName()}"></td>
+        <td>
+            <a th:href="@{/{id}/departments/{departmentId}/doctors(id=${id}, departmentId=${department.getId()})}">
+                <input type="submit" class="btn btn-outline-primary"  th:value="  Doctors  ">
+            </a>
+        </td>
+        <td>
+            <a th:href="@{/{id}/departments/{departmentId}/edit(id=${id}, departmentId=${department.getId()})}">
+                <input type="submit" class="btn btn-outline-primary"  th:value="  Update  ">
+            </a>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/{id}/departments/{departmentId}/delete(id=${id}, departmentId=${department.getId()})}">
+                <input type="submit" class="btn btn-outline-primary"  th:value="  Delete  ">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</html>

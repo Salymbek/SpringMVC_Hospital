@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor's appointments</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+          crossorigin="anonymous">
+    <style>
+        * {box-sizing: border-box;}
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url("https://thumbs.dreamstime.com/b/%D0%B0%D0%B1%D1%81%D1%82%D1%80%D0%B0%D0%BA%D1%82%D0%BD%D1%8B%D0%B9-%D0%B1%D0%B5%D0%BB%D1%8B%D0%B9-%D1%84%D0%BE%D0%BD-%D1%81-%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%BD%D1%8B%D0%BC%D0%B8-%D1%82%D0%BE%D1%87%D0%BA%D0%B0%D0%BC%D0%B8-%D0%B8-%D0%BB%D0%B8%D0%BD%D0%B8%D1%8F%D0%BC%D0%B8-%D0%BC%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9-236654726.jpg");
+            background-size: cover;
+        }
+
+        .header {
+            overflow: hidden;
+            background-color: #ffffff;
+            padding: 20px 10px;
+        }
+
+        .header a {
+            float: left;
+            color: #0c0a0a;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 25px;
+            border-radius: 4px;
+        }
+
+        .header a.logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .header a:hover {
+            background-color: #0db5e8;
+            color: #ffffff;
+        }
+
+        .header a.active {
+            background-color: #fce809;
+            color: #0d31e8;
+        }
+
+        .header-right {
+            float: right;
+        }
+
+        @media screen and (max-width: 500px) {
+            .header a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+
+            .header-right {
+                float: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <a th:href="@{/{id}/doctors(id=${id})}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+        </svg>
+        <a class="logo" th:text="${doctor.getFirstName() + ' ' + doctor.getLastName()}">Name</a>
+    </a>
+</div>
+<table class="table">
+    <thead class="table-dark">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Date</th>
+        <th scope="col">Patient</th>
+        <th scope="col">Doctor</th>
+        <th scope="col">Department</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="appointment:${appointments}">
+        <th th:text="${appointment.getId()}"></th>
+        <td th:text="${appointment.getDate()}"></td>
+        <td th:text="${appointment.getPatient().getFirstName()+' '+appointment.getPatient().getLastName()}"></td>
+        <td th:text="${appointment.getDoctor().getFirstName()+' '+appointment.getDoctor().getLastName()}"></td>
+        <td th:text="${appointment.getDepartment().getName()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</html>
