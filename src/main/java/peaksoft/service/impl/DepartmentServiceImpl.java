@@ -20,10 +20,12 @@ import java.util.List;
 public class DepartmentServiceImpl implements DepartmentService {
 
     private final DepartmentRepository departmentRepository;
+    private final DoctorRepository doctorRepository;
     private final AppointmentRepository appointmentRepository;
 
-    public DepartmentServiceImpl(DepartmentRepository departmentRepository, AppointmentRepository appointmentRepository) {
+    public DepartmentServiceImpl(DepartmentRepository departmentRepository,DoctorRepository doctorRepository, AppointmentRepository appointmentRepository) {
         this.departmentRepository = departmentRepository;
+        this.doctorRepository = doctorRepository;
         this.appointmentRepository = appointmentRepository;
     }
 

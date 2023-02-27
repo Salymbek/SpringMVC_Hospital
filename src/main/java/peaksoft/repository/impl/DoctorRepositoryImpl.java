@@ -46,10 +46,10 @@ public class DoctorRepositoryImpl implements DoctorRepository {
     @Override
     public void update(Long doctorId, Doctor doctor) {
         entityManager.createQuery("update Doctor set firstName = :f, lastName = :l," +
-                        "position  = :p, email = :e where id = :id")
+                        "position  = :pos, email = :e where id = :id")
                 .setParameter("f", doctor.getFirstName())
                 .setParameter("l", doctor.getLastName())
-                .setParameter("p", doctor.getPosition())
+                .setParameter("pos", doctor.getPosition())
                 .setParameter("e", doctor.getEmail())
                 .setParameter("id", doctorId)
                 .executeUpdate();

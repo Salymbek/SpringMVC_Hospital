@@ -27,7 +27,7 @@ public class Department {
     @Size(min = 2, max = 20, message = "Department name should be between 2 and 20 characters!")
     @Column( unique = true)
     private String name;
-    @ManyToOne(cascade = {PERSIST,REFRESH,MERGE,DETACH}, fetch = EAGER)
+    @ManyToOne(cascade = {PERSIST,REFRESH,MERGE,DETACH})
     private Hospital hospital;
     @ManyToMany(cascade = {PERSIST,REFRESH,MERGE,DETACH},fetch = EAGER, mappedBy = "departments")
     private List<Doctor>doctors;

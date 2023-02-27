@@ -14,7 +14,7 @@ import peaksoft.repository.DoctorRepository;
 import peaksoft.service.DoctorService;
 
 import java.util.List;
-import java.util.Optional;
+
 @Service
 @Transactional
 public class DoctorServiceImpl implements DoctorService {

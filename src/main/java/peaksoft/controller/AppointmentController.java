@@ -55,7 +55,7 @@ public class AppointmentController {
         appointmentService.save(id, appointment);
         return "redirect:/{id}/appointments";
     }
-    @GetMapping("/{appointmentId}/redaction")
+    @GetMapping("/{appointmentId}/edit")
     public String getUpdateForm(@PathVariable("id") Long id,
                                 @PathVariable("appointmentId") Long appointmentId,
                                 Model model){

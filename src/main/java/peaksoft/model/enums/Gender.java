@@ -1,4 +1,4 @@
-package peaksoft.enums;
+package peaksoft.model.enums;
 
 public enum Gender {
     FEMALE,

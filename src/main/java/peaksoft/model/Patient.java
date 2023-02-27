@@ -5,7 +5,7 @@ import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import peaksoft.enums.Gender;
+import peaksoft.model.enums.Gender;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,14 +33,14 @@ public class Patient {
     private String lastName;
     @Column(name = "phone_number")
     @NotEmpty(message = "Phone number should not be empty!")
-    @Pattern(regexp = "\\+996\\d{9}", message = "Phone number should start with +996 and consist of 13 characters!")
+    @Pattern(regexp = "\\+996\\d{9}")
     private String phoneNumber;
     @NotNull(message = "Choice gender!")
     @Enumerated(EnumType.STRING)
     private Gender gender;
     @NotEmpty(message = "Email should not be empty!")
     @Email(message = "Please provide a valid email address!")
-    @Column(unique = true)
+    @Column(unique = true, name = "email")
     private String email;
     @ManyToOne(cascade = {REFRESH, DETACH, MERGE, PERSIST})
     private Hospital hospital;

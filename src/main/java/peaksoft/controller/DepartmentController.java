@@ -51,7 +51,7 @@ public class DepartmentController {
             return "department/newPage";
         }
     }
-    @GetMapping("/{departmentId}/redaction")
+    @GetMapping("/{departmentId}/edit")
     public String getUpdateForm(@PathVariable("id") Long id,
                                 @PathVariable("departmentId") Long departmentId,
                                 Model model){

@@ -35,9 +35,9 @@ public class Doctor {
     private String position;
     @NotEmpty(message = "Email should not be empty!")
     @Email(message = "Please provide a valid email address!")
-    @Column(unique = true)
+    @Column(unique = true, name = "email")
     private String email;
-    @ManyToOne(cascade = {PERSIST,REFRESH,MERGE,DETACH}, fetch = EAGER)
+    @ManyToOne(cascade = {PERSIST,REFRESH,MERGE,DETACH})
     private Hospital hospital;
     @ManyToMany(cascade = {PERSIST,REFRESH,MERGE,DETACH}, fetch = EAGER)
     private List<Department>departments;

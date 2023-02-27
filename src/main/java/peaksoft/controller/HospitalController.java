@@ -75,7 +75,7 @@ public class HospitalController {
         return "redirect:/hospitals";
     }
 
-    @GetMapping("/{id}/redaction")
+    @GetMapping("/{id}/edit")
     public String getUpdateForm(@PathVariable("id") Long id, Model model) {
         try {
             model.addAttribute("hospital", hospitalService.getById(id));

@@ -27,6 +27,7 @@ public class Hospital {
     private String name;
     @NotEmpty(message = "Address should not be should!")
     private String address;
+    @Column(name = "image")
     private String image;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hospital")
     private List<Doctor> doctors;
@@ -67,5 +68,8 @@ public class Hospital {
         }
         appointments.add(appointment);
     }
+
+
+
 
 }

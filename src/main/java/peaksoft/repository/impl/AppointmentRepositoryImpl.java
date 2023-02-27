@@ -40,10 +40,10 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
     @Override
     public void update(Long appointmentId, Appointment appointment) {
         entityManager
-                .createQuery("update Appointment set date = :d, patient = :p, " +
+                .createQuery("update Appointment set date = :date, patient = :pat, " +
                         "doctor = :doc, department = :dep where id = :id")
-                .setParameter("d", appointment.getDate())
-                .setParameter("p", appointment.getPatient())
+                .setParameter("date", appointment.getDate())
+                .setParameter("pat", appointment.getPatient())
                 .setParameter("doc", appointment.getDoctor())
                 .setParameter("dep", appointment.getDepartment())
                 .setParameter("id", appointmentId)

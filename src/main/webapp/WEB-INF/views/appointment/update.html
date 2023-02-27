@@ -54,7 +54,6 @@
         <div class="form-group">
             <label for="myDate" class="date-label"></label>
             <input type="date" id="myDate" name="myDate" class="date-input" th:field="*{date}">
-            <p style="color: red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Date error</p>
         </div>
         <br>
         <br>
@@ -63,7 +62,6 @@
                 <option value="">select patient</option>
                 <option class="date-input" th:each="patient : ${patients}" th:value="${patient.getId()}" th:text="${patient.getFirstName()+' '+patient.getLastName()}"></option>
             </select>
-            <p style="color: red" th:if="${#fields.hasErrors('patientId')}" th:errors="*{patientId}">Patient error</p>
         </div>
         <br>
         <div class="form-group">
@@ -71,14 +69,12 @@
                 <option value="">select department</option>
                 <option class="date-input" th:each="department : ${departments}" th:value="${department.getId()}" th:text="${department.getName()}"></option>
             </select>
-            <p style="color: red" th:if="${#fields.hasErrors('departmentId')}" th:errors="*{departmentId}">Department error</p>
         </div>
         <div class="form-group">
             <select style="text-align:center;" th:field="*{doctorId}" class="date-input">
                 <option value="">select doctor</option>
                 <option class="date-input" th:each="doctor : ${doctors}" th:value="${doctor.getId()}" th:text="${doctor.getFirstName()+' '+doctor.getLastName()}"></option>
             </select>
-            <p style="color: red" th:if="${#fields.hasErrors('doctorId')}" th:errors="*{doctorId}">Doctor error</p>
         </div>
         <div>
             <br>

@@ -8,7 +8,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.exceptions.NotFoundException;
 import peaksoft.model.Doctor;
-import peaksoft.service.DepartmentService;
 import peaksoft.service.DoctorService;
 import peaksoft.service.HospitalService;
 
@@ -16,12 +15,11 @@ import peaksoft.service.HospitalService;
 @RequestMapping("/{id}/doctor")
 public class DoctorController {
     private final DoctorService doctorService;
-    private final DepartmentService departmentService;
+
     private final HospitalService hospitalService;
 
-    public DoctorController(DoctorService doctorService, DepartmentService departmentService, HospitalService hospitalService) {
+    public DoctorController(DoctorService doctorService, HospitalService hospitalService) {
         this.doctorService = doctorService;
-        this.departmentService = departmentService;
         this.hospitalService = hospitalService;
     }
     @GetMapping()
@@ -56,7 +54,7 @@ public class DoctorController {
             return "doctor/newPage";
         }
     }
-    @GetMapping("/{doctorId}/redaction")
+    @GetMapping("/{doctorId}/edit")
     public String getUpdateFrom(@PathVariable("id") Long id,
                                 @PathVariable("doctorId") Long doctorId,
                                 Model model){

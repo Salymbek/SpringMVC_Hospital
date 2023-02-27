@@ -23,8 +23,7 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
     @Override
     public List<Department> getAll(Long id) {
         return entityManager
-                .createQuery("from Department d join d.hospital h where h.id = :id",
-                        Department.class)
+                .createQuery("from Department d join d.hospital h where h.id = :id", Department.class)
                 .setParameter("id", id)
                 .getResultList();
     }

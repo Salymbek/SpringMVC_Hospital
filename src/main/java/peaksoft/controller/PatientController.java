@@ -61,7 +61,7 @@ public class PatientController {
         }
     }
 
-    @GetMapping("/{patientId}/redaction")
+    @GetMapping("/{patientId}/edit")
     private String getUpdateForm(@PathVariable("patientId") Long patientId,
                                  Model model,
                                  @PathVariable("id") Long id) {
