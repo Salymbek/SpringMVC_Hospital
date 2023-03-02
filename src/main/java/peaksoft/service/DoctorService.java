@@ -19,7 +19,7 @@ public interface DoctorService {
 
     List<Department> getDepartments(Long doctorId);
 
-    void assignToDepartment(Long doctorId, Doctor doctor);
+    void assignToDepartment(Long doctorId,Doctor doctor);
 
     void deleteDepartment(Long doctorId, Long departmentId);
 

@@ -66,4 +66,24 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
                 .createQuery("from Doctor d join d.departments dep where dep.id = :id",
                         Doctor.class).setParameter("id", departmentId).getResultList();
     }
+
+    @Override
+    public List<Department> findDepartmentByDoctor(Long hospitalId) {
+        return entityManager
+                .createQuery("select d from Department d\n" +
+                        "            join d.doctors do on d.id = do.id\n" +
+                        "            join d.hospital h on do.id = h.id\n" +
+                        "            where do.id = ?1", Department.class)
+                .getResultList();
+    }
+
+
+
+    @Override
+    public List<Department> findAllByDoctor(Long doctorId) {
+        return entityManager
+                .createQuery("select d from Department d join d.doctors do\n" +
+                        "            where do.id = ?1", Department.class)
+                .getResultList();
+    }
 }

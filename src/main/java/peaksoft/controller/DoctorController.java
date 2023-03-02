@@ -12,7 +12,7 @@ import peaksoft.service.DoctorService;
 import peaksoft.service.HospitalService;
 
 @Controller
-@RequestMapping("/{id}/doctor")
+@RequestMapping("/{id}/doctors")
 public class DoctorController {
     private final DoctorService doctorService;
 
@@ -100,18 +100,19 @@ public class DoctorController {
         }
     }
     @GetMapping("/{doctorId}/newDepartment")
-    public String assignToDepartment(@PathVariable("id") Long id,
-                                     @PathVariable("doctorId") Long doctorId,
-                                     Model model){
-        model.addAttribute("doctor", new Doctor());
-        model.addAttribute("departments", doctorService.getCanBeAssignDepartments(doctorId));
+    public String assignToDepartment(@PathVariable("doctorId") Long doctorId, Model model, @PathVariable String id){
+        model.addAttribute("doctor", doctorService.findById(doctorId));
+        model.addAttribute("departments", doctorService.getCanBeAssignDepartments
+                (doctorService.findById(doctorId).getHospital().getId()));
         return "doctor/assignToDepartment";
     }
+
+
     @PatchMapping("/{doctorId}/saveDepartment")
     public String saveDepartment(@PathVariable("id") Long id,
                                  @PathVariable("doctorId") Long doctorId,
                                  @ModelAttribute("doctor") Doctor doctor){
-        doctorService.assignToDepartment(doctorId, doctor);
+        doctorService.assignToDepartment(doctorId,doctor);
         return "redirect:/{id}/doctors/{doctorId}/departments";
     }
     @DeleteMapping("/{doctorId}/{departmentId}/delete")
@@ -133,4 +134,7 @@ public class DoctorController {
             return e.getMessage();
         }
     }
+
+
+
 }

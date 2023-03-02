@@ -88,6 +88,9 @@ public class DoctorServiceImpl implements DoctorService {
         doctorRepository.assignToDepartment(oldDoctor);
     }
 
+
+
+
     @Override
     public void deleteDepartment(Long doctorId, Long departmentId) {
         Doctor doctor = doctorRepository.findById(doctorId)

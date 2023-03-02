@@ -17,4 +17,6 @@ public interface DepartmentService {
     Department findById(Long departmentId);
 
     List<Doctor> getDoctors(Long id, Long departmentId);
+
+
 }

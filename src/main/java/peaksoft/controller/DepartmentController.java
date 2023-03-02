@@ -12,7 +12,7 @@ import peaksoft.service.DepartmentService;
 import peaksoft.service.HospitalService;
 
 @Controller
-@RequestMapping("/{id}/department")
+@RequestMapping("/{id}/departments")
 public class DepartmentController {
     private final DepartmentService departmentService;
     private final HospitalService hospitalService;
@@ -96,4 +96,6 @@ public class DepartmentController {
             return e.getMessage();
         }
     }
+
+
 }

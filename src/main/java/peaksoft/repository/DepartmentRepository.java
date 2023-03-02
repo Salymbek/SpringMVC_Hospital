@@ -18,4 +18,9 @@ public interface DepartmentRepository {
     Optional<Department> findById(Long departmentId);
 
     List<Doctor> getDoctors(Long departmentId);
+
+    List<Department> findDepartmentByDoctor (Long hospitalId);
+
+    List<Department> findAllByDoctor(Long doctorId);
+
 }

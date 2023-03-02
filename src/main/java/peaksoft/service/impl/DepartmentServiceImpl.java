@@ -1,7 +1,6 @@
 package peaksoft.service.impl;
 
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import peaksoft.exceptions.NotFoundException;
 import peaksoft.model.Appointment;
@@ -79,4 +78,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     public List<Doctor> getDoctors(Long id, Long departmentId) {
         return departmentRepository.getDoctors(departmentId);
     }
+
+
+
+
+
 }
